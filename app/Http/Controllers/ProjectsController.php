@@ -11,6 +11,9 @@ use App\Http\Requests\ProjectRequest;
 
 class ProjectsController extends Controller
 {
+    // https://codepen.io/chingy/pen/Exxvpjo
+    // https://codepen.io/tmarkart/pen/RxPjKd
+    // https://codepen.io/markbandilla/pen/ObEmpa
     /**
      * Display a listing of the resource.
      */
