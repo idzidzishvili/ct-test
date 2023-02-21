@@ -75,4 +75,8 @@ class TasksController extends Controller
         Task::findOrFail($id)->delete();
 		return redirect()->route('tasks.index');
     }
+
+    public function test(){
+        return view('test');
+    }
 }
