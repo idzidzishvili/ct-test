@@ -1,4 +1,4 @@
-<div class="form-group row">
+<div class="form-group row mb-3">
    <label for="tasks" class="col-sm-2 col-form-label">Task</label>
    <div class="col-sm-10">
       <select class="form-control multiselect w-100" id="project_id" name="project_id" >
@@ -10,7 +10,7 @@
    </div>
 </div>
 
-<div class="form-group row">
+<div class="form-group row mb-3">
    <label for="name" class="col-sm-2 col-form-label">Task name</label>
    <div class="col-sm-10">
       <input type="text" class="form-control" id="name" name="name" value="{{$task->name}}">

@@ -1,7 +1,7 @@
 <html>
 
 <head>
-	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
@@ -21,7 +21,6 @@
 			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-			aria-label="Search">
 		<div class="navbar-nav">
 			<div class="nav-item text-nowrap">
 				{{-- <a class="nav-link px-3" href="#">Sign out</a> --}}
@@ -55,9 +54,7 @@
                </ul>
             </div>
 			</nav>
-
-			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-				
+			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">				
             @yield('content')
 			</main>
 		</div>
