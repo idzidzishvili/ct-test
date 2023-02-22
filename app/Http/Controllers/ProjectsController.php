@@ -44,7 +44,7 @@ class ProjectsController extends Controller
     public function edit(string $id)
     {
         $project = Project::findOrFail($id);
-        return view('edit', ['action' => 'Edit', 'sing' => 'project', 'resource' => 'projects', 'project' => $project]);
+        return view('add-edit', ['action' => 'Edit', 'sing' => 'project', 'resource' => 'projects', 'project' => $project, 'id' => $id]);
     }
 
 

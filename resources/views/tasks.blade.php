@@ -38,7 +38,7 @@
                   <td class="col-3 ">
                      <div class="d-flex">
                         <a href="{{route('tasks.edit', ['task' => $task->id])}}" class="btn btn-xsm btn-outline-primary me-2">Edit</a>   
-                        <button type="submit" class="btn btn-xsm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#confirmDelete" data-id="{{$task->id}}">Delete</button>   
+                        <button type="submit" class="btn btn-xsm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#confirmDelete" data-id="{{$task->id}}" data-action="tasks">Delete</button>   
                      </div>
                   </td>
                </tr>

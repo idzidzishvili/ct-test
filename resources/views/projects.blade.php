@@ -18,6 +18,7 @@
                <th scope="col">#</th>
                <th scope="col">Project name</th>
                <th scope="col">Date created</th>
+               <th scope="col">Actions</th>
          </tr>
          </thead>
       <tbody>
@@ -26,10 +27,18 @@
                   <td>{{$i+1}}</td>
                   <td>{{$project->name}}</td>
                   <td>{{$project->created_at}}</td>
+                  <td class="col-3 ">
+                     <div class="d-flex">
+                        <a href="{{route('projects.edit', ['project' => $project->id])}}" class="btn btn-xsm btn-outline-primary me-2">Edit</a>   
+                        <button type="submit" class="btn btn-xsm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#confirmDelete" data-id="{{$project->id}}" data-action="projects">Delete</button>   
+                     </div>
+                  </td>
                </tr>             
             @endforeach
          </tbody>
       </table>
    </div>
+
+   @include('partials.confirm_delete')
 
 @endsection
