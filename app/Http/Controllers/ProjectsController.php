@@ -29,8 +29,7 @@ class ProjectsController extends Controller
     public function create()
     {
         $project = new Project();
-        $tasks = Task::all();
-        return view('add', ['resource' => 'projects', 'project' => $project, 'tasks' => $tasks, 'selectedTasks' => []]);
+        return view('add-edit', ['action' => 'Add', 'sing' => 'project', 'resource' => 'projects', 'project' => $project]);
     }
 
     /**
@@ -38,10 +37,9 @@ class ProjectsController extends Controller
      */
     public function store(ProjectRequest $request): RedirectResponse
     {
-        $project = Project::create([
+        Project::create([
             'name' => $request->name,
         ]);
-        $project->task()->attach($request->tasks);
         return redirect()->route('projects.index');
     }
 
@@ -59,9 +57,7 @@ class ProjectsController extends Controller
     public function edit(string $id)
     {
         $project = Project::findOrFail($id);
-        $tasks = Task::all();
-        $selectedTasks = $project->task->pluck('id')->toArray();
-        return view('edit', ['resource' => 'projects', 'project' => $project, 'tasks' => $tasks, 'selectedTasks' => $selectedTasks, 'id' => $id]);
+        return view('edit', ['action' => 'Edit', 'sing' => 'project', 'resource' => 'projects', 'project' => $project]);
     }
 
     /**
@@ -73,7 +69,6 @@ class ProjectsController extends Controller
         $project->update([
             'name' => $request->name
         ]);
-        $project->task()->sync($request->tasks);
         return redirect()->route('projects.index');
     }
 
@@ -84,5 +79,17 @@ class ProjectsController extends Controller
     {
         Project::findOrFail($id)->delete();
         return redirect()->route('projects.index');
+    }
+
+
+    public function projectTasks()
+    {
+        $projects = Project::all();
+        $tasks = null;
+        if(count($projects)){
+            $tasksArray = $projects[0]->task->pluck('id')->toArray();
+            $tasks = Task::whereIn('id', $tasksArray)->get();
+        }
+        return view('tasks-by-project', ['projects' => $projects, 'tasks' => $tasks]);
     }
 }
