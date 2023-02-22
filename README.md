@@ -2,7 +2,7 @@
 
 You can add projects and then within each project add several tasks, reorder tasks, edit and delete projects or tasks
 
-# Set up
+### Set up
 
 - Create database in your mySql server
 - Extract downloaded zip file and navigate to it
@@ -11,7 +11,7 @@ You can add projects and then within each project add several tasks, reorder tas
 - After command will be finished  run "php artisan serve" to serve project
 
 
-# Application usage
+### Application usage
 
 - Open link **[http://127.0.0.1:8000](http://127.0.0.1:8000)**
 - By default you will go to "Projects" section, here you can add, edit or delete projects, create at least one project
