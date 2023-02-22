@@ -8,7 +8,7 @@ You can add projects and then within each project add several tasks, reorder tas
 - Extract downloaded zip file and navigate to it
 - Edit .env file accordingly (usually only line 14, DB_DATABASE setting needs to be changed)
 - Run "php artisan migrate" to create tables in selected database
-- After command will be finished  run "php artisan serve" to serve project
+- Run "php artisan serve" to serve project
 
 
 ### Application usage
