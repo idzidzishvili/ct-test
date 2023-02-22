@@ -8,3 +8,16 @@ table td {
     background-color: #666;
     color: #fff;
 }
+
+#sort tbody{
+    cursor: move;
+}
+.ui-sortable-helper{
+    background-color: #d8d8d8;
+}
+.ui-sortable-helper td{
+    width: 25%!important;
+}
+.ui-sortable-helper td:last-child{
+    display: none;
+}

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\Task;
 use App\Http\Requests\TaskRequest;
+use App\Models\Project;
 
 class TasksController extends Controller
 {
@@ -15,7 +16,7 @@ class TasksController extends Controller
      */
     public function index()
     {
-        $tasks = Task::orderBy('priority', 'asc')->orderBy('updated_at', 'asc')->get();
+        $tasks = Task::with('project')->orderBy('priority', 'desc')->get();
 		return view('tasks', ['tasks' => $tasks]);
     }
 
@@ -24,8 +25,9 @@ class TasksController extends Controller
      */
     public function create()
     {
+        $projects = Project::all();
         $task = new Task();
-		return view('add', ['resource' => 'tasks', 'task' => $task]);
+		return view('add-edit', ['resource' => 'tasks', 'action' => 'Add', 'sing' => 'task', 'task' => $task, 'projects' => $projects]);
     }
 
     /**
@@ -34,6 +36,7 @@ class TasksController extends Controller
     public function store(TaskRequest $request): RedirectResponse
     {
         Task::create([
+            'project_id' => $request->project_id,
             'name' => $request->name,
         ]);
         return redirect()->route('tasks.index');
@@ -52,16 +55,18 @@ class TasksController extends Controller
      */
     public function edit(string $id)
     {
+        $projects = Project::all();
         $task = Task::findOrFail($id);
-		return view('edit', ['resource' => 'tasks', 'task' => $task, 'id' => $id]);
+		return view('add-edit', ['resource' => 'tasks', 'action' => 'Edit', 'sing' => 'task', 'task' => $task, 'projects' => $projects, 'id' => $id]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(TaskRequest $request, string $id): RedirectResponse
+    public function update(TaskRequest $request, string $id)
     {
         Task::findOrFail($id)->update([
+            'project_id' => $request->project_id,
             'name' => $request->name
         ]);
         return redirect()->route('tasks.index');
