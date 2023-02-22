@@ -21,9 +21,5 @@ Route::resource('tasks', App\Http\Controllers\TasksController::class);
 Route::get('project-tasks', [App\Http\Controllers\ProjectsController::class, 'projectTasks'])->name('project.tasks');
 Route::resource('projects', App\Http\Controllers\ProjectsController::class);
 
-Route::post('/reorder-tasks', [App\Http\Controllers\AjaxController::class, 'reorderTasks']);
+Route::post('reorder-tasks', [App\Http\Controllers\AjaxController::class, 'reorderTasks']);
 Route::get('get-tasks', [App\Http\Controllers\AjaxController::class, 'getTasks']);
-
-
-Route::get('/test', [App\Http\Controllers\TasksController::class, 'test']);
-Route::post('test', [App\Http\Controllers\AjaxController::class, 'test']);
